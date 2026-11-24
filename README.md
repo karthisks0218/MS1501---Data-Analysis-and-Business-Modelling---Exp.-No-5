@@ -44,4 +44,59 @@ The dataset consists of 16 manually entered customer data points representing tw
 
 ## Program & Output
 
+
+# Cluster Analysis For Market Segmentation
+
+# Step 1: Import Required Libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Step 2: Define Manual Data Arrays (X and Y coordinates)
+x = np.array([20, 22, 25, 70, 75, 80, 30, 35, 32, 24, 28, 75, 71, 83, 28, 27])
+
+y = np.array([30, 35, 40, 80, 85, 90, 70, 75, 33, 31, 45, 70, 83, 89, 60, 67])
+
+# Step 3: Combine X and Y as Features for Clustering
+X = np.column_stack((x, y))
+
+# Step 4: Apply K-Means Clustering
+kmeans = KMeans(n_clusters=3, random_state=42, n_init='auto')
+labels = kmeans.fit_predict(X)
+
+# Step 5: Retrieve Cluster Centroids
+centroids = kmeans.cluster_centers_
+
+# Step 6: Visualize Clusters
+plt.figure(figsize=(8, 6))
+
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis',
+            s=100, alpha=0.8)
+
+plt.scatter(centroids[:, 0], centroids[:, 1],
+            c='red', marker='X', s=200, label='Centroids')
+
+plt.title('K-Means Clustering for Market Segmentation')
+plt.xlabel('Feature 1 (e.g., Annual Income)')
+plt.ylabel('Feature 2 (e.g., Spending Score)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Step 7: Display Cluster Details
+print("Cluster Labels for Data Points:")
+print(labels)
+
+print("\nCluster Centroids (Coordinates):")
+print(centroids)
+
+# Output
+
+<img width="976" height="912" alt="image" src="https://github.com/user-attachments/assets/5adbdfdb-8cd2-47b9-bb3f-5b535db39f7d" />
+
+
 ## Result
+
+The K-Means Clustering algorithm was successfully implemented using 16 data points based on annual income and spending score. The data points were grouped into 3 distinct clusters, and their respective centroids were identified. The clusters were visualized using a scatter plot.
+
+Hence, the experiment was successfully completed, demonstrating the use of K-Means Clustering for effective market segmentation.
